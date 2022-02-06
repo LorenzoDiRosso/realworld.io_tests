@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 from Pages.registrationPage import RegistrationPage
 from Pages.homePage import HomePage
 from Pages.settingsPage import SettingsPage
@@ -35,7 +36,7 @@ class Test_Settings(Base):
  
         self.register_new_user(driver, usernameString, emailString, passwordString)
 
-        driver.implicitly_wait(50)
+        driver.implicitly_wait(500)
 
         home = HomePage(driver)
         home.click_settings_link
@@ -49,30 +50,7 @@ class Test_Settings(Base):
 
         signin = SigninPage(driver)
         assert signin.check_signin_link_exists
-
-    ''' #Getting stuck on the username text field in settings
-    def test_change_username_success(self):
-        usernameString, emailString, passwordString = self.set_input_parameters()
-        driver = self.driver
- 
-        self.register_new_user(driver, usernameString, emailString, passwordString)
-
-        home = HomePage(driver)
-        home.click_settings_link
-
-        driver.implicitly_wait(50)
-
-        # new unique username
-        updatedUsername = usernameString + ' updated'
-
-        
-        settings = SettingsPage(driver)
-        settings.enter_username(updatedUsername)
-
-        settings.click_update_settings_button
-
-        assert home.check_username_link_is_updated(updatedUsername)
-    '''
+         
 
     def test_change_bio_success(self):
         usernameString, emailString, passwordString = self.set_input_parameters()
@@ -88,10 +66,12 @@ class Test_Settings(Base):
 
         settings = SettingsPage(driver)
         settings.enter_bio(bio)
-        settings.click_update_settings_button
+        #settings.click_update_settings_button # not working
 
+        #temporary solution - some trouble shooting required
+        updateSettingBtn = driver.find_element(By.CSS_SELECTOR, '.btn.btn-lg.btn-primary.pull-xs-right')
+        updateSettingBtn.click()
 
-        #driver.implicitly_wait(50)
         sleep(5) #temporary solution
 
         assert bio in driver.page_source
@@ -99,3 +79,5 @@ class Test_Settings(Base):
   #  def test_change_email_success(self):
 
   #  def test_change_password_success(self):
+
+  #  def test_change_username_success(self):

@@ -1,18 +1,18 @@
 #,Page,Description,Pre-requisites,Steps,Expected Result,Notes
-1,Register,User can register new account,-,"- Navigate to https://demo.realworld.io/#/register
+TC001,Register,User can register new account,-,"- Navigate to https://demo.realworld.io/#/register
 - Type valid username in username text-field
 - Type valid email in email field
 - Type valid password in password field
 - Press Enter Key","'Your feed’ link present
 'Setting’ link present",
-2,Settings,User can change username,User registered and logged in,"- Click settings link
+TC002,Settings,User can change username,User registered and logged in,"- Click settings link
 - Type valid username in username text-field
 - Click update button",Updated username visible on home page,
-3,Settings,User can change Short bio,User registered and logged in,"- Click settings link
+TC003,Settings,User can change Short bio,User registered and logged in,"- Click settings link
 - Type valid bio in bio text-field
 - Click update button","Updated bio visible on home page
 ",
-4,Settings,User can change email,User registered and logged in,"- Click settings link
+TC004,Settings,User can change email,User registered and logged in,"- Click settings link
 - Type valid password in password field
 - Click update button
 - Click setting link
@@ -22,7 +22,7 @@
 - Type original password in password field","- Able to login with new email
 -'Your feed’ link present 
 -'Setting’ link present",
-5,Settings,User can change password,User registered and logged in,"- Click settings link
+TC005,Settings,User can change password,User registered and logged in,"- Click settings link
 - Type valid password in password field
 - Click update button
 - Click setting link
@@ -32,28 +32,28 @@
 - Type new password in password field","- Able to login with new password
 - 'Your feed’ link present 
 - 'Setting’ link present",
-6,Settings,User can logout,User registered and logged in,"- Click settings link
+TC006,Settings,User can logout,User registered and logged in,"- Click settings link
 - Click logout button","- User unable to navigate to setting page
 - ‘Sing In’ link visible",
-7,Register,User inputs blank username,-,"- Navigate to https://demo.realworld.io/#/register
+TC007,Register,User inputs blank username,-,"- Navigate to https://demo.realworld.io/#/register
 - Type valid email in email field
 - Type valid password in password field
 - Press Enter Key",Error message,
-8,Register,User inputs blank email,-,"- Navigate to https://demo.realworld.io/#/register
+TC008,Register,User inputs blank email,-,"- Navigate to https://demo.realworld.io/#/register
 - Type valid username in username text-field
 - Type valid password in password field
 - Press Enter Key",Error message,
-9,Register,User inputs invalid email,-,"- Navigate to https://demo.realworld.io/#/register
+TC009,Register,User inputs invalid email,-,"- Navigate to https://demo.realworld.io/#/register
 - Type valid username in username text-field
 - Type invalid email in email field
 - Type valid password in password field
 - Press Enter Key",Error message,
-10,Register,User inputs blank password,-,"- Navigate to https://demo.realworld.io/#/register
+TC010,Register,User inputs blank password,-,"- Navigate to https://demo.realworld.io/#/register
 - Type valid username in username text-field
 - Type valid email in email field
 - Press Enter Key",Error message,
-11,Settings,User attempt to change email to invalid email address,User registered and logged in,"- Click settings link
+TC011,Settings,User attempt to change email to invalid email address,User registered and logged in,"- Click settings link
 - Type invalid email in email field
 - Click Update button",Error message,
-12,Register,User inputs duplicate username,-,,Error message,Check if API to create users exists 
-13,Register,User inputs duplicate email,-,,Error message,Check if API to create users exists 
+TC012,Register,User inputs duplicate username,-,,Error message,Check if API to create users exists 
+TC013,Register,User inputs duplicate email,-,,Error message,Check if API to create users exists 

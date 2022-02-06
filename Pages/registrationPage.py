@@ -9,6 +9,7 @@ class RegistrationPage:
         self.email_textbox_css = RegisterLocators.email_textbox_css
         self.password_textbox_css = RegisterLocators.password_textbox_css
         self.sign_up_button_xpath = RegisterLocators.sign_up_button_xpath
+        self.error_message_classname = RegisterLocators.error_message_classname
 
     def enter_username(self, username):
         self.driver.find_element(By.CSS_SELECTOR, self.username_textbox_css).send_keys(username)
@@ -21,3 +22,9 @@ class RegistrationPage:
 
     def click_signUp(self):
         self.driver.find_element(By.XPATH, self.sign_up_button_xpath).click()
+
+    def check_error_message_exists(self):
+        if(self.driver.find_element(By.LINK_TEXT, self.error_message_classname)):
+            return True
+        else:
+            return False

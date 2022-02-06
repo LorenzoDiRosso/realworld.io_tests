@@ -34,4 +34,55 @@ class Test_Register(Base):
         #Fix here
         assert home.check_settings_link_exists
         assert home.check_your_feed_link_exists
-        
+
+    def test_registration_error_on_blank_username(self):
+        usernameString, emailString, passwordString = self.set_input_parameters()
+        usernameString = ''
+
+        driver = self.driver
+        register = RegistrationPage(driver)
+        register.enter_username(usernameString)
+        register.enter_email(emailString)
+        register.enter_password(passwordString)
+        register.click_signUp()
+
+        assert register.check_error_message_exists
+
+    def test_registration_error_on_blank_email(self):
+        usernameString, emailString, passwordString = self.set_input_parameters()
+        emailString = ''
+
+        driver = self.driver
+        register = RegistrationPage(driver)
+        register.enter_username(usernameString)
+        register.enter_email(emailString)
+        register.enter_password(passwordString)
+        register.click_signUp()
+
+        assert register.check_error_message_exists
+
+    def test_registration_error_on_invalid_email(self):
+        usernameString, emailString, passwordString = self.set_input_parameters()
+        emailString = 'test_at_test.com'
+
+        driver = self.driver
+        register = RegistrationPage(driver)
+        register.enter_username(usernameString)
+        register.enter_email(emailString)
+        register.enter_password(passwordString)
+        register.click_signUp()
+
+        assert register.check_error_message_exists
+
+    def test_registration_error_on_blank_password(self):
+        usernameString, emailString, passwordString = self.set_input_parameters()
+        passwordString = ''
+
+        driver = self.driver
+        register = RegistrationPage(driver)
+        register.enter_username(usernameString)
+        register.enter_email(emailString)
+        register.enter_password(passwordString)
+        register.click_signUp()
+
+        assert register.check_error_message_exists

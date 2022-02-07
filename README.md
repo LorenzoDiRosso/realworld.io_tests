@@ -25,11 +25,8 @@ To run the tests, execute:
 
 # Reports
 
-For better illustration on the testcases, allure reports has been integrated.
-To enable Allure listener to collect results during the test execution, simply run:
+For better illustration on the testcases, html reports can be generated. To do so, run:
 
-``` pytest --alluredir=allure_test_results```
+``` py.test --html=report.html -s```
 
-To see the actual report after the tests have finished, run:
-
-``` allure serve allure_test_results```
+Simply open the generated html file with a broswer.

@@ -30,7 +30,7 @@ class Test_Settings(Base):
         register.enter_password(password)
         register.click_signUp()
 
-    def test_logout_success(self):
+    def test_logout_success_TC006(self):
         usernameString, emailString, passwordString = self.set_input_parameters()
         driver = self.driver
  
@@ -52,15 +52,15 @@ class Test_Settings(Base):
         assert signin.check_signin_link_exists
          
 
-    def test_change_bio_success(self):
+    def test_change_bio_success_TC003(self):
         usernameString, emailString, passwordString = self.set_input_parameters()
         driver = self.driver
  
         self.register_new_user(driver, usernameString, emailString, passwordString)
 
-        sleep(5) #temporary solution
+        sleep(5) #temporary solution, will inlude implicit wait here
         driver.get("https://demo.realworld.io/#/settings")
-        sleep(5) #temporary solution
+        sleep(5) #temporary solution, will inlude implicit wait here
 
         bio = "A short bio"
 
@@ -76,8 +76,10 @@ class Test_Settings(Base):
 
         assert bio in driver.page_source
 
-  #  def test_change_email_success(self):
+  #  def test_change_username_success_TC002(self):
 
-  #  def test_change_password_success(self):
+  #  def test_change_email_success_TC004(self):
 
-  #  def test_change_username_success(self):
+  #  def test_change_password_success_TC005(self):
+
+

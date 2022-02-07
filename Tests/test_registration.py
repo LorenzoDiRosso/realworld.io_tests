@@ -19,7 +19,7 @@ class Test_Register(Base):
         return usernameString, emailString, passwordString
 
     
-    def test_registration_success(self):
+    def test_registration_success_TC001(self):
         usernameString, emailString, passwordString = self.set_input_parameters()
 
         driver = self.driver
@@ -35,7 +35,7 @@ class Test_Register(Base):
         assert home.check_settings_link_exists
         assert home.check_your_feed_link_exists
 
-    def test_registration_error_on_blank_username(self):
+    def test_registration_error_on_blank_username_TC007(self):
         usernameString, emailString, passwordString = self.set_input_parameters()
         usernameString = ''
 
@@ -48,7 +48,7 @@ class Test_Register(Base):
 
         assert register.check_error_message_exists
 
-    def test_registration_error_on_blank_email(self):
+    def test_registration_error_on_blank_email_TC008(self):
         usernameString, emailString, passwordString = self.set_input_parameters()
         emailString = ''
 
@@ -61,7 +61,7 @@ class Test_Register(Base):
 
         assert register.check_error_message_exists
 
-    def test_registration_error_on_invalid_email(self):
+    def test_registration_error_on_invalid_email_TC009(self):
         usernameString, emailString, passwordString = self.set_input_parameters()
         emailString = 'test_at_test.com'
 
@@ -74,7 +74,7 @@ class Test_Register(Base):
 
         assert register.check_error_message_exists
 
-    def test_registration_error_on_blank_password(self):
+    def test_registration_error_on_blank_password_TC010(self):
         usernameString, emailString, passwordString = self.set_input_parameters()
         passwordString = ''
 

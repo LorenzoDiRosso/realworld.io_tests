@@ -1,30 +1,27 @@
 from Locators.registerLocators import RegisterLocators
-from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+#from selenium.webdriver.common.action_chains import ActionChains
 
 class RegistrationPage:
 
     def __init__(self, driver):
         self.driver = driver
-        self.username_textbox_css = RegisterLocators.username_textbox_css
-        self.email_textbox_css = RegisterLocators.email_textbox_css
-        self.password_textbox_css = RegisterLocators.password_textbox_css
-        self.sign_up_button_xpath = RegisterLocators.sign_up_button_xpath
-        self.error_message_classname = RegisterLocators.error_message_classname
 
     def enter_username(self, username):
-        self.driver.find_element(By.CSS_SELECTOR, self.username_textbox_css).send_keys(username)
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(RegisterLocators.username_textbox)).send_keys(username)
 
     def enter_email(self, email):
-        self.driver.find_element(By.CSS_SELECTOR, self.email_textbox_css).send_keys(email)
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(RegisterLocators.email_textbox)).send_keys(email)
 
     def enter_password(self, password):
-        self.driver.find_element(By.CSS_SELECTOR, self.password_textbox_css).send_keys(password)
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(RegisterLocators.password_textbox)).send_keys(password)
 
     def click_signUp(self):
-        self.driver.find_element(By.XPATH, self.sign_up_button_xpath).click()
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(RegisterLocators.sign_up_button)).click()
 
     def check_error_message_exists(self):
-        if(self.driver.find_element(By.LINK_TEXT, self.error_message_classname)):
+        if(WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(RegisterLocators.error_message))):
             return True
         else:
             return False

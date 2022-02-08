@@ -30,3 +30,8 @@ class HomePage:
             return True
         else:
             return False
+
+    def assert_text_exists_in_page_source(self, text):
+        # waits for page to load
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(HomeLocators.bio_text))
+        assert text in self.driver.page_source

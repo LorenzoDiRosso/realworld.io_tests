@@ -1,8 +1,9 @@
-from selenium.webdriver.common.by import By
+# from selenium.webdriver.common.by import By
 from Pages.registrationPage import RegistrationPage
 from Pages.homePage import HomePage
 from Pages.settingsPage import SettingsPage
 from Pages.signinPage import SigninPage
+from selenium.webdriver.common.by import By
 from Base.base import Base
 import pytest
 from time import sleep
@@ -30,27 +31,7 @@ class Test_Settings(Base):
         register.enter_password(password)
         register.click_signUp()
 
-    def test_logout_success_TC006(self):
-        usernameString, emailString, passwordString = self.set_input_parameters()
-        driver = self.driver
- 
-        self.register_new_user(driver, usernameString, emailString, passwordString)
-
-        driver.implicitly_wait(500)
-
-        home = HomePage(driver)
-        home.click_settings_link
-
-        driver.implicitly_wait(500)
-
-        settings = SettingsPage(driver)
-        settings.click_logout_button
-
-        driver.implicitly_wait(500)
-
-        signin = SigninPage(driver)
-        assert signin.check_signin_link_exists
-         
+    # def test_change_username_success_TC002(self):
 
     def test_change_bio_success_TC003(self):
         usernameString, emailString, passwordString = self.set_input_parameters()
@@ -58,25 +39,44 @@ class Test_Settings(Base):
  
         self.register_new_user(driver, usernameString, emailString, passwordString)
 
-        sleep(5) #temporary solution, will inlude implicit wait here
+        sleep(5); #temporary solution
         driver.get("https://demo.realworld.io/#/settings")
-        sleep(5) #temporary solution, will inlude implicit wait here
 
         bio = "A short bio"
 
         settings = SettingsPage(driver)
         settings.enter_bio(bio)
-        #settings.click_update_settings_button # not working
+        settings.click_update_settings_button # not working - not doing click()
 
-        #temporary solution - some trouble shooting required
+        # Temporary fix
         updateSettingBtn = driver.find_element(By.CSS_SELECTOR, '.btn.btn-lg.btn-primary.pull-xs-right')
         updateSettingBtn.click()
+ 
 
-        sleep(5) #temporary solution
+        home = HomePage(driver)
+        home.assert_text_exists_in_page_source(bio)
 
-        assert bio in driver.page_source
 
-  #  def test_change_username_success_TC002(self):
+    # def test_change_email_success_TC004(self):
+
+    # def test_change_password_success_TC005(self):
+
+    def test_logout_success_TC006(self):
+        usernameString, emailString, passwordString = self.set_input_parameters()
+        driver = self.driver
+ 
+        self.register_new_user(driver, usernameString, emailString, passwordString)
+
+        home = HomePage(driver)
+        home.click_settings_link
+
+        settings = SettingsPage(driver)
+        settings.click_logout_button
+
+        signin = SigninPage(driver)
+        assert signin.check_signin_link_exists
+         
+
 
   #  def test_change_email_success_TC004(self):
 

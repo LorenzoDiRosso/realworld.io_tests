@@ -1,18 +1,13 @@
 from Locators.settingsLocators import SettingsLocators
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 
 class SettingsPage:
 
     def __init__(self, driver):
         self.driver = driver
-        # self.username_textbox_xpath = SettingsLocators.username_textbox_xpath
-        # self.bio_textbox_xpath = SettingsLocators.bio_textbox_xpath
-        # self.email_textbox_xpath = SettingsLocators.email_textbox_xpath
-        # self.password_textbox_xpath = SettingsLocators.password_textbox_xpath
-        # self.update_settings_button_css = SettingsLocators.update_settings_button_css
-        # self.logout_button_css = SettingsLocators.logout_button_css
 
     def enter_username(self, username):
         WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(SettingsLocators.username_textbox)).clear()
@@ -35,6 +30,7 @@ class SettingsPage:
         # self.driver.find_element(By.XPATH, self.password_textbox_xpath).send_keys(password)
 
     def click_update_settings_button(self):
+
         WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(SettingsLocators.update_settings_button)).click()
         # self.driver.find_element(By.CSS_SELECTOR, self.update_settings_button_css).click()
 

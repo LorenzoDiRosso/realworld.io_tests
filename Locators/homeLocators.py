@@ -1,5 +1,7 @@
+from selenium.webdriver.common.by import By
+
 class HomeLocators:
 
     # Home page elements
-    settings_link_text = 'Settings'
-    your_feed_link_text = 'Your Feed'
+    settings_link = (By.LINK_TEXT, 'Settings')
+    your_feed_link = (By.LINK_TEXT, 'Your Feed')

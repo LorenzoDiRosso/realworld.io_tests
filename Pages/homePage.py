@@ -26,7 +26,7 @@ class HomePage:
             return False
 
     def check_username_link_is_updated(self, username):
-        if(WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(By.LINK_TEXT, username))):
+        if(WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.LINK_TEXT, username)))):
             return True
         else:
             return False
